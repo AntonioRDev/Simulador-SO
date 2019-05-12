@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SOsimulatorWinForms
+namespace SOsimulatorWinForms.Views
 {
-    public partial class Form1 : Form
+    public partial class TelaPreemptivo : Form
     {
-        public Form1()
+        public TelaPreemptivo()
         {
             InitializeComponent();
         }

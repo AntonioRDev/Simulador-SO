@@ -46,14 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Views\TelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\TelaInicial.Designer.cs">
+      <DependentUpon>TelaInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\TelaNaoPreemptivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TelaNaoPreemptivo.Designer.cs">
+      <DependentUpon>TelaNaoPreemptivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TelaPreemptivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TelaPreemptivo.Designer.cs">
+      <DependentUpon>TelaPreemptivo.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\TelaInicial.resx">
+      <DependentUpon>TelaInicial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +78,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\TelaNaoPreemptivo.resx">
+      <DependentUpon>TelaNaoPreemptivo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
