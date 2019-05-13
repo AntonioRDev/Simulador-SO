@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Aplicação.cs" />
+    <Compile Include="Componentes\RAM.cs" />
     <Compile Include="Views\TelaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
