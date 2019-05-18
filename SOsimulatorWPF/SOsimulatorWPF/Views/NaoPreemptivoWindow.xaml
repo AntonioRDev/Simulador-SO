@@ -1,0 +1,54 @@
+﻿<Window x:Class="SOsimulatorWPF.Views.NaoPreemptivoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SOsimulatorWPF.Views"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Background="Gray"
+        Title="NaoPreemptivoWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Programas -->
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Content="Chome" Height="50"/>
+            <Button Grid.Column="0" Grid.Row="1" Content="Code" Height="50"/>
+            <Button Grid.Column="1" Grid.Row="0" Content="Paint" Height="50"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Excel" Height="50"/>
+            <Button Grid.Column="2" Grid.Row="0" Content="Firefox" Height="50"/>
+            <Button Grid.Column="2" Grid.Row="1" Content="Photoshop" Height="50"/>
+            <Button Grid.Column="3" Grid.Row="0" Content="Paciencia" Height="50"/>
+            <Button Grid.Column="3" Grid.Row="1" Content="Notepad" Height="50"/>
+            
+        </Grid>
+
+
+        <TextBlock Text="RAM" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="25"/> 
+        <ListView x:Name="RAM" Grid.Row="1" Width="200" Margin="0,0,0,10"/>
+
+        <TextBlock Text="MMU" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="25"/>
+        <ListView x:Name="MMU" Grid.Row="1" Grid.Column="1" Height="120" Margin="10,50,10,0"/>
+
+        <TextBlock Text="CPU" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="25"/>
+        <ListView x:Name="CPU" Grid.Row="1" Grid.Column="2" Height="120" Margin="10,50,10,0"/>
+    </Grid>
+</Window>
