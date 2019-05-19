@@ -1,5 +1,4 @@
 ﻿using SOsimulatorWPF.Models;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SOsimulatorWPF.Components
@@ -8,12 +7,14 @@ namespace SOsimulatorWPF.Components
     {
         public static int Tamanho { get; set; } = 1024;
         public static ObservableCollection<Processo> Processos { get; set; } = new ObservableCollection<Processo>();
+        private static int EnderecoAtual { get; set; } = 0;
 
         static RAM()
         {
             var systemProcess = new Processo();
             systemProcess.Nome = "Windows 10";
             systemProcess.Tamanho = 100;
+            systemProcess.EnderecoMemoria = EnderecoAtual++;
             Processos.Add(systemProcess);
         }
 
@@ -23,6 +24,7 @@ namespace SOsimulatorWPF.Components
             {
                 throw new System.Exception("Memória cheia");
             }
+            processo.EnderecoMemoria = EnderecoAtual++;
             Processos.Add(processo);
             Tamanho = Tamanho - processo.Tamanho;
         }
@@ -33,6 +35,7 @@ namespace SOsimulatorWPF.Components
             {
                 throw new System.Exception("Memória vazia");
             }
+            processo.EnderecoMemoria = null;
             Processos.Remove(processo);
             Tamanho = Tamanho + processo.Tamanho;
         }

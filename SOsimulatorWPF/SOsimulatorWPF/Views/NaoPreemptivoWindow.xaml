@@ -42,7 +42,15 @@
         </Grid>
 
         <TextBlock Text="RAM" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="25"/>
-        <ListView x:Name="RamListView" Grid.Row="1" ItemsSource="{Binding RAM.Processos, Mode=OneWay}" Width="200" Margin="0,0,0,10"/>
+        <ListView x:Name="RamListView" Grid.Row="1" ItemsSource="{Binding RAM.Processos, Mode=OneWay}" Width="200" Margin="0,0,0,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Endereço" DisplayMemberBinding="{Binding EnderecoMemoria}"/>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Tamanho" DisplayMemberBinding="{Binding Tamanho}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <TextBlock Text="MMU" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="25"/>
         <ListView x:Name="MMU" Grid.Row="1" Grid.Column="1" Height="120" Margin="10,50,10,0"/>
