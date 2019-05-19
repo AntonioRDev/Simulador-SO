@@ -6,14 +6,14 @@ namespace SOsimulatorWPF.Components
     public static class RAM
     {
         public static int Tamanho { get; set; } = 1024;
-        public static ObservableCollection<Processo> Processos { get; set; } = new ObservableCollection<Processo>();
+        public static ObservableCollectionEx<Processo> Processos { get; set; } = new ObservableCollectionEx<Processo>();
         private static int EnderecoAtual { get; set; } = 0;
 
         static RAM()
         {
             var systemProcess = new Processo();
             systemProcess.Nome = "Windows 10";
-            systemProcess.Tamanho = 100;
+            systemProcess.Tamanho = 300;
             systemProcess.EnderecoMemoria = EnderecoAtual++;
             Processos.Add(systemProcess);
         }

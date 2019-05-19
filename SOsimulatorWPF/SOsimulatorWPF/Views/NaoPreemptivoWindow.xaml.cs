@@ -1,6 +1,9 @@
 ﻿using SOsimulatorWPF.Components;
+using SOsimulatorWPF.Escalonador;
 using SOsimulatorWPF.Models;
 using System;
+using System.Collections;
+using System.Threading;
 using System.Windows;
 
 namespace SOsimulatorWPF.Views
@@ -10,11 +13,20 @@ namespace SOsimulatorWPF.Views
     /// </summary>
     public partial class NaoPreemptivoWindow : Window
     {
+        private FIFO Algoritmo;
+
         public NaoPreemptivoWindow()
         {
             InitializeComponent();
             this.DataContext = this;
             RamListView.ItemsSource = RAM.Processos;
+            MmuListView.ItemsSource = MMU.Processos;
+            CpuListView.ItemsSource = CPU.Processo;
+
+            Algoritmo = new FIFO();
+            
+            Thread thread = new Thread(Algoritmo.StartAlgoritmo);
+            thread.Start();
         }
 
         private void Chrome_Click(object sender, RoutedEventArgs e)
@@ -24,6 +36,7 @@ namespace SOsimulatorWPF.Views
                 var app = new Processo();
                 app.Nome = "Google Chrome";
                 app.Tamanho = 128;
+                app.TempoExecucao = 5;
                 RAM.AdicionarProcesso(app);
             }
             catch(Exception ex)
@@ -39,6 +52,7 @@ namespace SOsimulatorWPF.Views
                 var app = new Processo();
                 app.Nome = "Visual Code";
                 app.Tamanho = 128;
+                app.TempoExecucao = 5;
                 RAM.AdicionarProcesso(app);
             }
             catch(Exception ex)
@@ -53,6 +67,7 @@ namespace SOsimulatorWPF.Views
             {
                 var app = new Processo();
                 app.Nome = "Paint";
+                app.TempoExecucao = 5;
                 app.Tamanho = 60;
                 RAM.AdicionarProcesso(app);
             }
@@ -68,6 +83,7 @@ namespace SOsimulatorWPF.Views
             {
                 var app = new Processo();
                 app.Nome = "Excel";
+                app.TempoExecucao = 5;
                 app.Tamanho = 80;
                 RAM.AdicionarProcesso(app);
             }
@@ -83,6 +99,7 @@ namespace SOsimulatorWPF.Views
             {
                 var app = new Processo();
                 app.Nome = "Firefox";
+                app.TempoExecucao = 5;
                 app.Tamanho = 100;
                 RAM.AdicionarProcesso(app);
             }
@@ -98,6 +115,7 @@ namespace SOsimulatorWPF.Views
             {
                 var app = new Processo();
                 app.Nome = "Photoshop";
+                app.TempoExecucao = 5;
                 app.Tamanho = 90;
                 RAM.AdicionarProcesso(app);
             }
@@ -113,6 +131,7 @@ namespace SOsimulatorWPF.Views
             {
                 var app = new Processo();
                 app.Nome = "Paciência";
+                app.TempoExecucao = 5;
                 app.Tamanho = 50;
                 RAM.AdicionarProcesso(app);
             }
@@ -129,12 +148,19 @@ namespace SOsimulatorWPF.Views
                 var app = new Processo();
                 app.Nome = "Notepad";
                 app.Tamanho = 30;
+                app.TempoExecucao = 5;
                 RAM.AdicionarProcesso(app);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Sair_Click(object sender, RoutedEventArgs e)
+        {
+            Algoritmo.StopThread();
+            this.Close();
         }
     }
 }

@@ -1,20 +1,24 @@
 ﻿using SOsimulatorWPF.Models;
-using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace SOsimulatorWPF.Components
 {
     public static class MMU
     {
-        public static ObservableCollection<Processo> Processos { get; set; } = new ObservableCollection<Processo>();
+        public static ObservableCollectionEx<Processo> Processos { get; set; } = new ObservableCollectionEx<Processo>();
+        private static int EnderecoAtual { get; set; } = 1000;
 
         public static void AdicionarProcesso(Processo processo)
         {
-
+            RAM.RemoverProcesso(RAM.Processos.Where(p => p == processo).FirstOrDefault());
+            processo.EnderecoMemoria = EnderecoAtual + 1;
+            Processos.Add(processo);
         }
 
-        public static void RemoverProcesso()
+        public static void RemoverProcesso(Processo processo)
         {
-                     
+            Processos.Remove(processo);
+            EnderecoAtual = EnderecoAtual - 1;
         }
     }
 }
