@@ -40,9 +40,13 @@ namespace SOsimulatorWPF.Components
             Tamanho = Tamanho + processo.Tamanho;
         }
 
-        public static void ExecutarProcesso(Processo processo)
+        public static void Clear()
         {
-
+            foreach(var processo in Processos)
+            {
+                if (processo.Nome != "Windows 10")
+                    RemoverProcesso(processo);
+            }
         }
     }
 }

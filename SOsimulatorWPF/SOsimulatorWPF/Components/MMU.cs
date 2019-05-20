@@ -20,5 +20,11 @@ namespace SOsimulatorWPF.Components
             Processos.Remove(processo);
             EnderecoAtual = EnderecoAtual - 1;
         }
+
+        public static void Clear()
+        {
+            foreach (var processo in Processos)
+                RemoverProcesso(processo);
+        }
     }
 }

@@ -2,7 +2,6 @@
 using SOsimulatorWPF.Escalonador;
 using SOsimulatorWPF.Models;
 using System;
-using System.Collections;
 using System.Threading;
 using System.Windows;
 
@@ -14,6 +13,7 @@ namespace SOsimulatorWPF.Views
     public partial class NaoPreemptivoWindow : Window
     {
         private FIFO Algoritmo;
+        private Thread thread;
 
         public NaoPreemptivoWindow()
         {
@@ -25,7 +25,7 @@ namespace SOsimulatorWPF.Views
 
             Algoritmo = new FIFO();
             
-            Thread thread = new Thread(Algoritmo.StartAlgoritmo);
+            thread = new Thread(Algoritmo.StartAlgoritmo);
             thread.Start();
         }
 
@@ -159,7 +159,10 @@ namespace SOsimulatorWPF.Views
 
         private void Sair_Click(object sender, RoutedEventArgs e)
         {
-            Algoritmo.StopThread();
+            thread.Abort();
+            //CPU.RemoverProcesso();
+            //MMU.Clear();
+            //RAM.Clear();
             this.Close();
         }
     }

@@ -41,6 +41,8 @@
             
         </Grid>
 
+        <TextBlock Text="Algoritmo: FIFO" FontSize="20"  Margin="0,40"/>       
+        
         <Button Grid.Column="2" Content="SAIR" FontSize="50" Click="Sair_Click" Height="80" Width="120" Background="Red"/>
         <TextBlock Text="RAM" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="25"/>
         <ListView x:Name="RamListView" Grid.Row="1" ItemsSource="{Binding RAM.Processos, Mode=OneWay}" Width="200" Margin="0,0,0,10">

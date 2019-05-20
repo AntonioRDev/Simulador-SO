@@ -3,10 +3,80 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SOsimulatorWPF.Views"
-        mc:Ignorable="d" Background="Blue" WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:SOsimulatorWPF.Views" Background="Gray"
+        mc:Ignorable="d"  WindowStartupLocation="CenterScreen"
         Title="PreemptivoWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Programas -->
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Content="Chome" Height="50" Click="Chrome_Click"/>
+            <Button Grid.Column="0" Grid.Row="1" Content="Code" Height="50" Click="Code_Click"/>
+            <Button Grid.Column="1" Grid.Row="0" Content="Paint" Height="50" Click="Paint_Click"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Excel" Height="50" Click="Excel_Click" />
+            <Button Grid.Column="2" Grid.Row="0" Content="Firefox" Height="50" Click="Firefox_Click"/>
+            <Button Grid.Column="2" Grid.Row="1" Content="Photoshop" Height="50" Click="Photoshop_Click"/>
+            <Button Grid.Column="3" Grid.Row="0" Content="Paciencia" Height="50" Click="Paciencia_Click"/>
+            <Button Grid.Column="3" Grid.Row="1" Content="Notepad" Height="50" Click="Notepad_Click"/>
+
+        </Grid>
+
+        <TextBlock Text="Algoritmo: Round Robin" FontSize="20"/>
+        <TextBlock Text="Quantum: 3 segundos" FontSize="20" Margin="0,40"/>
+
+        <Button Grid.Column="2" Content="SAIR" FontSize="50" Click="Sair_Click" Height="80" Width="120" Background="Red"/>
+        <TextBlock Text="RAM" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="25"/>
+        <ListView x:Name="RamListView" Grid.Row="1" ItemsSource="{Binding RAM.Processos, Mode=OneWay}" Width="240" Margin="0,0,0,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Endereço" DisplayMemberBinding="{Binding EnderecoMemoria}"/>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Tamanho" DisplayMemberBinding="{Binding Tamanho}"/>
+                    <GridViewColumn Header="Tempo Conclusão" DisplayMemberBinding="{Binding TempoExecucao}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBlock Text="MMU" Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="25"/>
+        <ListView x:Name="MmuListView" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding MMU.Processos, Mode=OneWay}" Height="120" Margin="10,50,10,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Endereço" DisplayMemberBinding="{Binding EnderecoMemoria}"/>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Tamanho" DisplayMemberBinding="{Binding Tamanho}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <TextBlock Text="CPU" Grid.Column="2" Grid.Row="1" TextAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" FontSize="25"/>
+        <ListView x:Name="CpuListView" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding CPU.Processos, Mode=OneWay}" Height="120" Margin="10,50,10,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" DisplayMemberBinding="{Binding Nome}"/>
+                    <GridViewColumn Header="Tamanho" DisplayMemberBinding="{Binding Tamanho}"/>
+                    <GridViewColumn Header="Tempo Execução" DisplayMemberBinding="{Binding TempoExecucao}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

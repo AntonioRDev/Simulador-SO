@@ -20,5 +20,11 @@ namespace SOsimulatorWPF.Components
         {
             Processo.Clear();
         }
+
+        public static void VoltarProcesso(Processo processo)
+        {            
+            RemoverProcesso();
+            RAM.AdicionarProcesso(processo);
+        }
     }
 }

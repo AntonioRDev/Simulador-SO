@@ -58,6 +58,7 @@
     <Compile Include="Components\CPU.cs" />
     <Compile Include="Components\MMU.cs" />
     <Compile Include="Escalonador\FIFO.cs" />
+    <Compile Include="Escalonador\RoundRobin.cs" />
     <Compile Include="ObservableCollectionEx.cs" />
     <Compile Include="Views\NaoPreemptivoWindow.xaml.cs">
       <DependentUpon>NaoPreemptivoWindow.xaml</DependentUpon>
